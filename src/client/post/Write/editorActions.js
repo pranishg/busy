@@ -105,14 +105,7 @@ const broadcastComment = (
     allow_curation_rewards: true,
     max_accepted_payout: '1000000.000 SBD',
     percent_steem_dollars: 10000,
-	extensions: [
-      [
-	    0, 
-	   {
-         beneficiaries: [{ account: 'power4nepal', weight: 2000 }],
-       }]
-      ]	
-	  };
+	};
 
   if (reward === rewardsValues.none) {
     commentOptionsConfig.max_accepted_payout = '0.000 SBD';
@@ -120,7 +113,7 @@ const broadcastComment = (
     commentOptionsConfig.percent_steem_dollars = 0;
   }
 
-  if (referral && referral !== authUsername) {
+  if (allow_curation_rewards== true) {
     commentOptionsConfig.extensions = [
       [
         0,
@@ -132,7 +125,7 @@ const broadcastComment = (
   }
 
   if (reward === rewardsValues.none || reward === rewardsValues.all || referral) {
-    operations.push(['comment_options', commentOptionsConfig, extensions: [] ]);
+    operations.push(['comment_options', commentOptionsConfig,]);
   }
 
   if (upvote) {
