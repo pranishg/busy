@@ -80,7 +80,7 @@ const broadcastComment = (
   reward,
   upvote,
   permlink,
-  referral,
+  extensions,
   authUsername,
 ) => {
   const operations = [];
@@ -105,6 +105,14 @@ const broadcastComment = (
     allow_curation_rewards: true,
     max_accepted_payout: '1000000.000 SBD',
     percent_steem_dollars: 10000,
+	extensions: [
+            [0, {
+              beneficiaries: [
+                { account: 'good-karma', weight: 2000 },
+                { account: 'null', weight: 5000 }
+              ]
+            }]
+          ]
 	};
 
   if (reward === rewardsValues.none) {
@@ -194,7 +202,7 @@ export function createPost(postData) {
             !isUpdating && reward,
             !isUpdating && upvote,
             permlink,
-            referral,
+            extensions,
             authUser.name,
           ).then(result => {
             if (draftId) {
