@@ -111,10 +111,7 @@ const broadcastComment = (
     commentOptionsConfig.max_accepted_payout = '0.000 SBD';
   } else if (reward === rewardsValues.all) {
     commentOptionsConfig.percent_steem_dollars = 0;
-  }
-
-  if (referral && referral !== authUsername) {
-    commentOptionsConfig.extensions = [
+	commentOptionsConfig.extensions = [
       [
         0,
         {
@@ -124,6 +121,7 @@ const broadcastComment = (
     ];
   }
 
+  
   if (reward === rewardsValues.none || reward === rewardsValues.all || referral) {
     operations.push(['comment_options', commentOptionsConfig]);
   }
