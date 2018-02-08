@@ -46,7 +46,7 @@ module.exports = {
         process.env.STEEMCONNECT_CLIENT_ID || 'power.nepal',
       ),
       'process.env.STEEMCONNECT_REDIRECT_URL': JSON.stringify(
-        process.env.STEEMCONNECT_REDIRECT_URL || 'https://power4nepal.herokuapp.com/',
+        process.env.STEEMCONNECT_REDIRECT_URL || 'https://power4nepal.herokuapp.com/callback',
       ),
       'process.env.STEEMCONNECT_HOST': JSON.stringify(
         process.env.STEEMCONNECT_HOST || 'https://steemconnect.com',
