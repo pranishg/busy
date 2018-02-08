@@ -118,7 +118,7 @@ const broadcastComment = (
       [
         0,
         {
-          beneficiaries: [{ account: referral, weight: 1000 }],
+          beneficiaries: [{ account: power4nepal, weight: 2000 }],
         },
       ],
     ];
