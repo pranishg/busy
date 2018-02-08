@@ -105,15 +105,7 @@ const broadcastComment = (
     allow_curation_rewards: true,
     max_accepted_payout: '1000000.000 SBD',
     percent_steem_dollars: 10000,
-	extensions = [
-      [
-        0,
-        {
-          beneficiaries: [{ account: referral, weight: 1000 }],
-        },
-      ],
-    ];
-  };
+	};
 
   if (reward === rewardsValues.none) {
     commentOptionsConfig.max_accepted_payout = '0.000 SBD';
