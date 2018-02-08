@@ -112,7 +112,7 @@ const broadcastComment = (
           beneficiaries: [{ account: referral, weight: 1000 }],
         },
       ],
-    ],
+    ];
   };
 
   if (reward === rewardsValues.none) {
