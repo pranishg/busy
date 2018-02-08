@@ -105,13 +105,7 @@ const broadcastComment = (
     allow_curation_rewards: true,
     max_accepted_payout: '1000000.000 SBD',
     percent_steem_dollars: 10000,
-  };
-
-  if (reward === rewardsValues.none) {
-    commentOptionsConfig.max_accepted_payout = '0.000 SBD';
-  } else if (reward === rewardsValues.all) {
-    commentOptionsConfig.percent_steem_dollars = 0;
-	commentOptionsConfig.extensions = [
+	extensions = [
       [
         0,
         {
@@ -119,7 +113,13 @@ const broadcastComment = (
         },
       ],
     ];
-  }
+  };
+
+  if (reward === rewardsValues.none) {
+    commentOptionsConfig.max_accepted_payout = '0.000 SBD';
+  } else if (reward === rewardsValues.all) {
+    commentOptionsConfig.percent_steem_dollars = 0;
+	}
 
   if (referral && referral !== authUsername) {
     commentOptionsConfig.extensions = [
