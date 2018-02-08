@@ -202,7 +202,7 @@ export function createPost(postData) {
             !isUpdating && reward,
             !isUpdating && upvote,
             permlink,
-            referral,
+            extensions,
             authUser.name,
           ).then(result => {
             if (draftId) {
