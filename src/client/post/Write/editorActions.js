@@ -113,7 +113,7 @@ const broadcastComment = (
     commentOptionsConfig.percent_steem_dollars = 0;
   }
 
-  if (allow_curation_rewards== true) {
+  if (reward === rewardsValues.all) {
     commentOptionsConfig.extensions = [
       [
         0,
