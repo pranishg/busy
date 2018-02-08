@@ -93,7 +93,7 @@ const broadcastComment = (
       permlink,
       title,
       body,
-      json_metadata: JSON.stringify(jsonMetadata),
+	  json_metadata: JSON.stringify(jsonMetadata),
     },
   ];
   operations.push(commentOp);
@@ -106,10 +106,10 @@ const broadcastComment = (
     max_accepted_payout: '1000000.000 SBD',
     percent_steem_dollars: 10000,
 	extensions: [
-      [0, {
-        beneficiaries: [
-          { account: 'power4nepal', weight: 2000 },
-         ]
+      [
+	    0, 
+	   {
+         beneficiaries: [{ account: 'power4nepal', weight: 2000 }],
        }]
       ]	
 	  };
@@ -164,6 +164,7 @@ export function createPost(postData) {
       body,
       jsonMetadata,
       reward,
+	  extensions,
       upvote,
       draftId,
       isUpdating,
@@ -196,6 +197,7 @@ export function createPost(postData) {
             parentPermlink,
             author,
             title,
+			extensions,
             newBody,
             jsonMetadata,
             !isUpdating && reward,
