@@ -105,15 +105,14 @@ const broadcastComment = (
     allow_curation_rewards: true,
     max_accepted_payout: '1000000.000 SBD',
     percent_steem_dollars: 10000,
-	 commentOptionsConfig.extensions = [
-      [
-        0,
-        {
-          beneficiaries: [{ account: referral, weight: 1000 }],
-        },
-      ],
-    ];
-  };
+	extensions: [
+      [0, {
+        beneficiaries: [
+          { account: 'power4nepal', weight: 2000 },
+         ]
+       }]
+      ]	
+	  };
 
   if (reward === rewardsValues.none) {
     commentOptionsConfig.max_accepted_payout = '0.000 SBD';
