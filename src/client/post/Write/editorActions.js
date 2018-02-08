@@ -121,7 +121,17 @@ const broadcastComment = (
     ];
   }
 
-  
+  if (referral && referral !== authUsername) {
+    commentOptionsConfig.extensions = [
+      [
+        0,
+        {
+          beneficiaries: [{ account: referral, weight: 1000 }],
+        },
+      ],
+    ];
+  }
+
   if (reward === rewardsValues.none || reward === rewardsValues.all || referral) {
     operations.push(['comment_options', commentOptionsConfig]);
   }
