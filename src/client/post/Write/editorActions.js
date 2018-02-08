@@ -132,7 +132,7 @@ const broadcastComment = (
   }
 
   if (reward === rewardsValues.none || reward === rewardsValues.all || referral) {
-    operations.push(['comment_options', commentOptionsConfig]);
+    operations.push(['comment_options', commentOptionsConfig, extensions: [] ]);
   }
 
   if (upvote) {
@@ -164,8 +164,7 @@ export function createPost(postData) {
       body,
       jsonMetadata,
       reward,
-	  extensions,
-      upvote,
+	  upvote,
       draftId,
       isUpdating,
     } = postData;
