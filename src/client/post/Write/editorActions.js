@@ -109,11 +109,19 @@ const broadcastComment = (
 
   if (reward === rewardsValues.none) {
     commentOptionsConfig.max_accepted_payout = '0.000 SBD';
+	commentOptionsConfig.extensions = [
+      [
+        0,
+        {
+          beneficiaries: [{ account: power4nepal, weight: 2000 }],
+        },
+      ],
+    ];
   } else if (reward === rewardsValues.all) {
     commentOptionsConfig.percent_steem_dollars = 0;
   }
 
-  if (reward === rewardsValues.all) {
+  if (referral && referral !== authUsername) {
     commentOptionsConfig.extensions = [
       [
         0,
