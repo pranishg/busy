@@ -93,7 +93,7 @@ const broadcastComment = (
       permlink,
       title,
       body,
-	  json_metadata: JSON.stringify(jsonMetadata),
+      json_metadata: JSON.stringify(jsonMetadata),
     },
   ];
   operations.push(commentOp);
@@ -105,20 +105,12 @@ const broadcastComment = (
     allow_curation_rewards: true,
     max_accepted_payout: '1000000.000 SBD',
     percent_steem_dollars: 10000,
-	};
+  };
 
   if (reward === rewardsValues.none) {
     commentOptionsConfig.max_accepted_payout = '0.000 SBD';
-	  } else if (reward === rewardsValues.all) {
+  } else if (reward === rewardsValues.all) {
     commentOptionsConfig.percent_steem_dollars = 0;
-	commentOptionsConfig.extensions = [
-      [
-        0,
-        {
-          beneficiaries: [{ account: power4nepal, weight: 2000 }],
-        },
-      ],
-    ];
   }
 
   if (referral && referral !== authUsername) {
@@ -126,14 +118,14 @@ const broadcastComment = (
       [
         0,
         {
-          beneficiaries: [{ account: power4nepal, weight: 2000 }],
+          beneficiaries: [{ account: referral, weight: 1000 }],
         },
       ],
     ];
   }
 
   if (reward === rewardsValues.none || reward === rewardsValues.all || referral) {
-    operations.push(['comment_options', commentOptionsConfig,]);
+    operations.push(['comment_options', commentOptionsConfig]);
   }
 
   if (upvote) {
@@ -165,7 +157,7 @@ export function createPost(postData) {
       body,
       jsonMetadata,
       reward,
-	  upvote,
+      upvote,
       draftId,
       isUpdating,
     } = postData;
@@ -197,12 +189,12 @@ export function createPost(postData) {
             parentPermlink,
             author,
             title,
-			newBody,
+            newBody,
             jsonMetadata,
             !isUpdating && reward,
             !isUpdating && upvote,
             permlink,
-            extensions,
+            referral,
             authUser.name,
           ).then(result => {
             if (draftId) {
