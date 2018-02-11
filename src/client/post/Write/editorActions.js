@@ -65,7 +65,7 @@ export const editPost = post => dispatch => {
   );
 };
 
-const requiredFields = 'parentAuthor,parentPermlink,author,permlink,title,body,jsonMetadata,extensions'.split(
+const requiredFields = 'parentAuthor,parentPermlink,author,permlink,title,body,jsonMetadata'.split(
   ',',
 );
 
@@ -80,7 +80,7 @@ const broadcastComment = (
   reward,
   upvote,
   permlink,
-  extensions,
+  referral,
   authUsername,
 ) => {
   const operations = [];
@@ -105,21 +105,13 @@ const broadcastComment = (
     allow_curation_rewards: true,
     max_accepted_payout: '1000000.000 SBD',
     percent_steem_dollars: 10000,
-	extensions: [
-            [0, {
-              beneficiaries: [
-                { account: 'good-karma', weight: 2000 },
-                { account: 'null', weight: 5000 }
-              ]
-            }]
-          ]
-	};
+  };
 
   if (reward === rewardsValues.none) {
     commentOptionsConfig.max_accepted_payout = '0.000 SBD';
   } else if (reward === rewardsValues.all) {
     commentOptionsConfig.percent_steem_dollars = 0;
-	}
+  }
 
   if (referral && referral !== authUsername) {
     commentOptionsConfig.extensions = [
@@ -202,7 +194,7 @@ export function createPost(postData) {
             !isUpdating && reward,
             !isUpdating && upvote,
             permlink,
-            extensions,
+            referral,
             authUser.name,
           ).then(result => {
             if (draftId) {
