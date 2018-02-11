@@ -65,7 +65,7 @@ export const editPost = post => dispatch => {
   );
 };
 
-const requiredFields = 'parentAuthor,parentPermlink,author,permlink,title,body,jsonMetadata'.split(
+const requiredFields = 'parentAuthor,parentPermlink,author,permlink,title,body,jsonMetadata,extensions'.split(
   ',',
 );
 
